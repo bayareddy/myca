@@ -1,0 +1,16 @@
+
+<app-headernav></app-headernav>
+<app-sidenav></app-sidenav>
+<div (click)="closeNav()">
+
+  <app-default></app-default>
+</div>
+
+<app-footernav></app-footernav>
+
+<span style="cursor: pointer;" (click)='click()'>{{condition?'&#10025;':'&#10026;'}}</span>
+
+<input type="text" [(ngModel)]='photo' name="photo">
+<button (click)='match()'>djjd</button>
+
+
