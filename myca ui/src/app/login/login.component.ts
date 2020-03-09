@@ -63,4 +63,8 @@ this.http.get('assets/login.json').subscribe(res=>{
 }
 });
   }
+//   valid:boolean=false;
+//   click(){
+// this.valid=!this.valid;
+//   }
 }
