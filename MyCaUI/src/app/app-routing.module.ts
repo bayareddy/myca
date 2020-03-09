@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { MainContentComponent } from './home/main-content/main-content.component';
+import { LoginService } from './login/login.service';
+;
 
 
 const appRoutes: Routes = [
@@ -11,7 +13,7 @@ const appRoutes: Routes = [
 
     children: [
       {
-        path: 'home', component: HomeComponent,
+        path: 'home', component: HomeComponent,canActivate:[LoginService],
         children: [
          
           { path: '', component: MainContentComponent },

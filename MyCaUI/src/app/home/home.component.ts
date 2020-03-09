@@ -1,8 +1,9 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, SimpleChange } from '@angular/core';
 import { LoginService } from '../login/login.service';
-import { Router, NavigationStart } from '@angular/router';
+import { Router, NavigationStart, CanActivate } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-home',
@@ -12,15 +13,10 @@ import { HttpClient } from '@angular/common/http';
 export class HomeComponent implements OnInit {
 
 
-constructor(private router:Router,private service:LoginService,private http:HttpClient){}
+constructor(private service:LoginService,private route:Router){}
 data
+
 ngOnInit(){
-
- this.data=this.service.messages$.subscribe(data=>{this.data=data
-  console.log(data)
-
-});
- 
 }
 
 
@@ -28,7 +24,7 @@ ngOnInit(){
   closeNav() {
     document.getElementById("mySidenav").style.width = "0";
     this.service.subjectMethod$('sideNavPardha')
-   
+ 
 
   }
 

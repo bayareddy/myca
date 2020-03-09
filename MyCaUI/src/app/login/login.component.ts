@@ -12,7 +12,7 @@ import { UpperCasePipe } from '@angular/common';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-constructor(private http:HttpClient, private route:Router){
+constructor(private http:HttpClient, private route:Router,private loginService:LoginService){
 
 }
   loginForm = new FormGroup({
@@ -40,6 +40,7 @@ ar:any[]
     console.log("login values are pardha", this.loginForm.value);
   
  this.http.get('assets/loginData.json').subscribe(data=>{
+  
    console.log(data)
 this.ar=Object.assign([],data)
 
@@ -48,7 +49,10 @@ this.ar=Object.assign([],data)
    
    if(this.loginForm.value.username.toLowerCase()==data[i]['username']&&
    this.loginForm.value.password==data[i]['password']){
+   console.log('called')
     this.route.navigate(['home'])
+     this.loginService.loginStatus='loginned'
+   
    }else console.log(false)
  }})
  

@@ -13,8 +13,7 @@ export class HeadernavComponent implements OnInit {
   side: boolean = false;
   constructor(private loginService: LoginService) { }
   ngOnInit() {
-    console.log('headers', this.loginService.currentUser)
-    this.firstName = this.loginService.currentUser['firstName'];
+  
     this.loginService.messages$.subscribe(data => {
 
 

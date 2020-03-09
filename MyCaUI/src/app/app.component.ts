@@ -10,15 +10,14 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
- 
-  public subject=new BehaviorSubject([]);
-  message$=this.subject.asObservable()
 
-  array:model[]=[{name:'pardha'},{name:'aamam'},{name:'manu'},]
+
 
 ngOnInit(){
 
-this.subject.next(this.array)
+ 
 }
+
+
 }
 

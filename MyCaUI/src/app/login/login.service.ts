@@ -1,40 +1,43 @@
 import { Injectable, OnInit } from '@angular/core';
-import { ApiService } from '../service/api.service';
+
 import { BehaviorSubject } from 'rxjs';
 import { model } from '../Model/model';
+import { CanActivate, Router } from '@angular/router';
+import { Route } from '@angular/compiler/src/core';
 
 
 @Injectable()
-export class LoginService  {
+export class LoginService implements CanActivate{
 
   subject = new BehaviorSubject('');
   public messages$ = this.subject.asObservable()
   
- 
-  constructor(private api: ApiService) { 
-
-   
+  loginStatus;
+  constructor(private route:Router) { 
 
   }
-  public currentUser = { name: 'pardha' };
-  private loginUrl = '/employee/login';
-  private forGetUrl = '';
-  private creatUrl = '';
-  onSubmit(data) {
-    let loginUrl = this.loginUrl + "?employeeId=" + data.employeeId + "&password=" + data.password;
-    console.log('currentUser', this.currentUser)
-    console.log('this is pardha===>>>' + loginUrl);
-    return this.api.get(loginUrl);
+  
+    
+canActivate(){
+  console.log(this.loginStatus)
+  if(this.loginStatus=='loginned'){
+    return true;
+  }else{
+this.route.navigate(['login'])
+    return false}
+
 
   }
 
 
  subjectMethod$(value){
    this.subject.next(value);
+
  }
   
   ngOnInit() {
-
+    
+    
   }
 
 
